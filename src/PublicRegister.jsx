@@ -48,7 +48,7 @@ const payload = {
 };
 
 try {
-    await axiosInstance.post('User/register', payload); 
+    await axiosInstance.post('/api/User/register', payload); 
     alert("¡Registro exitoso! Tu cuenta está en revisión. Un Administrador debe activarla.");
     navigate('/login');
 } catch (error) {

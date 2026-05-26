@@ -27,7 +27,7 @@ const [errorMsg, setErrorMsg] = useState('');
 const loadContent = async () => {
 try {
     setErrorMsg('');
-    const response = await api.get('/Storage/directory', {
+    const response = await api.get('/api/Storage/directory', {
     params: {
         folderId: currentFolderId,
         search: searchTerm || undefined,
@@ -65,7 +65,7 @@ const handleCreateFolder = async (e) => {
 e.preventDefault();
 if (!newFolderName.trim()) return;
 try {
-    await api.post('/Storage/folder', { name: newFolderName, parentId: currentFolderId, userId: userId });
+    await api.post('/api/Storage/folder', { name: newFolderName, parentId: currentFolderId, userId: userId });
     setNewFolderName('');
     setShowFolderModal(false);
     loadContent();
@@ -86,7 +86,7 @@ formData.append('userId', userId);
 
 try {
     setErrorMsg('');
-    await api.post('/Storage/file', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+    await api.post('/api/Storage/file', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
     loadContent();
 } catch (err) {
     setErrorMsg(err.response?.data?.message || 'Error al subir el archivo.');
@@ -107,7 +107,7 @@ const handleRename = async (e) => {
         setErrorMsg(''); 
         
         // Enviamos el objeto con las propiedades esperadas
-        await api.put(`/Storage/${selectedItem.id}/rename`, { 
+        await api.put(`/api/Storage/${selectedItem.id}/rename`, { 
             name: nombreFinal, 
             userId: Number(userId) 
         });
@@ -133,7 +133,7 @@ try {
 
 const handleDownload = async (id, fileName) => {
 try {
-    const response = await api.get(`/Storage/download/${id}`, { responseType: 'blob' });
+    const response = await api.get(`/api/Storage/download/${id}`, { responseType: 'blob' });
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement('a');
     link.href = url;

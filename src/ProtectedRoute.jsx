@@ -4,7 +4,7 @@ function ProtectedRoute({ allowedRoles }) {
 const storedUser = sessionStorage.getItem('user');
 
 if (!storedUser) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/api/login" replace />;
 }
 
 const user = JSON.parse(storedUser);

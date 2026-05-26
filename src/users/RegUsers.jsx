@@ -50,7 +50,7 @@ function RegUsers() {
     };
 
     try {
-      await axiosInstance.post('User/register', dataToSend);
+      await axiosInstance.post('/api/User/register', dataToSend);
       alert("¡Usuario creado exitosamente por el Administrador!");
       setFormData({ name: '', email: '', pass: '', role: 'User', status: 'Activo' });
       setConfirmPass('');

@@ -24,7 +24,7 @@ function Login() {
 
 const handleLogin = async () => {
     try {
-      const response = await api.post('/Auth/login', {
+      const response = await api.post('/api/Auth/login', {
           email: email,
           pass: pass
       });

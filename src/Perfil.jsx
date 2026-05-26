@@ -44,7 +44,7 @@ if (password && password !== confirmPassword) {
 
 setLoading(true);
 try {
-    const response = await api.put(`/User/${user.id}/update-profile`, {
+    const response = await api.put(`/api/User/${user.id}/update-profile`, {
     name,
     email,
     birthDate,

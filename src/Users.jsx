@@ -26,7 +26,7 @@ function Users() {
   const fetchUsers = async (pageTarget = page, sizeTarget = pageSize, filtros = currentFilters) => {
     try {
       // Usamos el axiosInstance y le agregamos el "/" al inicio de User
-      const response = await axiosInstance.get('/User', {
+      const response = await axiosInstance.get('/api/User', {
         params: {
           ...filtros,
           page: pageTarget,
@@ -50,7 +50,7 @@ function Users() {
 
     try {
       // Usamos el axiosInstance y le agregamos el "/" al inicio de User
-      await axiosInstance.put(`/User/${userId}`, {
+      await axiosInstance.put(`/api/User/${userId}`, {
         name: usuarioActual.name,
         email: usuarioActual.email,
         birth: usuarioActual.birth,

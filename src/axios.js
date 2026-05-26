@@ -2,9 +2,10 @@ import axios from 'axios';
 
 // 1. Creamos la instancia base
 const api = axios.create({
-    baseURL: 'http://localhost:5217/api',
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5217',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
     }
 });
 
